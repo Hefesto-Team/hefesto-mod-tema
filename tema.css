@@ -1,0 +1,33 @@
+:root{
+  --app-bg:#eef0f5;
+  --panel:#ffffff;
+  --elevated:#f5f6fa;
+  --border-sutil:#e1e4ec;
+  --border-forte:#c5c9d6;
+  --linha:#c9cdd9;
+  --rot-linha:#c9cdd9;
+  --sel-bg:rgba(106,61,194,0.12);
+  --fg:#1c1e29;
+  --texto-suave:#383c4c;
+  --texto-mudo:#545a70;
+  --comment:#4a5486;
+  --rot-campo:#1d7a3c;
+  --green:#1d7a3c;
+  --cyan:#006d85;
+  --purple:#6a3dc2;
+  --orange:#a35200;
+  --pink:#ad2f6c;
+  --red:#c01f2e;
+  --yellow:#7a6400;
+  --c-controle:#3e91b9;
+  --c-wifi:#818aa4;
+  --c-teclado:#d26d00;
+  --c-mouse:#859006;
+  --c-celular:#f35323;
+  --c-relogio:#4a84ff;
+  --c-ruido:#8489a4;
+  --c-fone:#0395b4;
+  --c-caixa:#a56cf7;
+  --c-outro:#8287a7;
+  --c-acessorio:#ff27a3
+}

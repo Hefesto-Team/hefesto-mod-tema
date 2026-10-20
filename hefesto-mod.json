@@ -1,0 +1,12 @@
+{
+  "id": "tema-claro",
+  "nome": "Tema claro",
+  "versao": "1.0.0",
+  "api": ">=2,<3",
+  "licenca": "MIT",
+  "descricao": "A interface do Hefesto em fundo claro, com os textos e os destaques escuros que passam na régua de contraste.",
+  "aviso": "Extensão independente: troca só as cores da interface do Hefesto. Não roda programa nenhum e não lê nada da sua casa.",
+  "tipos": ["tema"],
+  "permissoes": ["tema"],
+  "tema": {"arquivo": "tema.css"}
+}
