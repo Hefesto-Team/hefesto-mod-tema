@@ -74,3 +74,10 @@ def test_a_logo_ganha_o_disco_escuro_de_sempre() -> None:
     """A logo do Hefesto fica a de sempre: o tema religa o disco escuro atrás dela, com o aro claro."""
     assert TOKENS["--logo-fundo"] == "radial-gradient(circle at 35% 30%,#3b2d5c,#1a1b24 70%)"
     assert TOKENS["--logo-aro"] == TOKENS["--linha"]
+
+
+def test_o_fundo_em_volta_da_janela_fica_um_tom_abaixo_do_fundo() -> None:
+    """A moldura clara: abaixo do ``--app-bg``, como o ``#11121a`` da casa fica abaixo do ``#21222c``."""
+    assert TOKENS["--fundo-da-pagina"] == "#dde1ea"
+    assert _luminancia(TOKENS["--fundo-da-pagina"]) < _luminancia(TOKENS["--app-bg"])
+    assert _contraste(TOKENS["--fg"], TOKENS["--fundo-da-pagina"]) >= 4.5

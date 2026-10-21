@@ -4,3 +4,4 @@
 
 - A extensão nasce: o fundo claro, os textos escuros, os sete destaques e as cores das categorias da aba Conexões, medidos pela régua de contraste do Hefesto.
 - A logo ganha o disco escuro de sempre (`--logo-fundo`) e o aro claro (`--logo-aro`): as cores dela não mudam.
+- O fundo em volta da janela fica claro (`--fundo-da-pagina`), um tom abaixo do fundo da interface.
