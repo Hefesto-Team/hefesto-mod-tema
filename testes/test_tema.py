@@ -68,3 +68,9 @@ def test_a_regua_do_hefesto_aceita_a_folha() -> None:
     tema = pytest.importorskip("hefesto_dualsense4unix.mods.tema")
     aceito = tema.validar(FOLHA)
     assert aceito.tokens["--app-bg"] == TOKENS["--app-bg"]
+
+
+def test_a_logo_ganha_o_disco_escuro_de_sempre() -> None:
+    """A logo do Hefesto fica a de sempre: o tema religa o disco escuro atrás dela, com o aro claro."""
+    assert TOKENS["--logo-fundo"] == "radial-gradient(circle at 35% 30%,#3b2d5c,#1a1b24 70%)"
+    assert TOKENS["--logo-aro"] == TOKENS["--linha"]

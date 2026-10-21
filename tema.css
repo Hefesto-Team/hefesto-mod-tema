@@ -29,5 +29,7 @@
   --c-fone:#0395b4;
   --c-caixa:#a56cf7;
   --c-outro:#8287a7;
-  --c-acessorio:#ff27a3
+  --c-acessorio:#ff27a3;
+  --logo-fundo:radial-gradient(circle at 35% 30%,#3b2d5c,#1a1b24 70%);
+  --logo-aro:#c9cdd9
 }

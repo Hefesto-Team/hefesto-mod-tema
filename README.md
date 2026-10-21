@@ -13,6 +13,7 @@ escurecidos até ficarem legíveis sobre o branco. As cores das categorias da ab
 
 O Hefesto mede a folha antes de ligar: cada texto passa de 4,5:1 e cada destaque de 3:1 sobre os três fundos.
 As cores dos plásticos dos controles não mudam: a luz do controle é a mesma em qualquer tema.
+A logo também fica a de sempre: o tema põe atrás dela o disco escuro, com um aro claro.
 
 A janela lê o tema quando abre: depois de ligar ou desligar, feche e abra a interface.
 
