@@ -15,7 +15,7 @@ O Hefesto mede a folha antes de ligar: cada texto passa de 4,5:1 e cada destaque
 As cores dos plásticos dos controles não mudam: a luz do controle é a mesma em qualquer tema.
 A logo também fica a de sempre: o tema põe atrás dela o disco escuro, com um aro claro, e o fundo em volta da janela fica claro também.
 
-A janela lê o tema quando abre: depois de ligar ou desligar, feche e abra a interface.
+O tema troca na hora: a chave da aba Experimental liga ou desliga, e a janela aberta repinta sem fechar, com a barra de cima e as listas do sistema no claro.
 
 ## Instalar
 
