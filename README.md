@@ -2,7 +2,7 @@
 
 A interface do Hefesto em fundo claro, com os textos e os destaques escuros que passam na régua de contraste.
 
-> **Aviso.** Extensão independente: troca só as cores da interface do Hefesto. Não roda programa nenhum e não lê nada da sua casa.
+> **Aviso.** Extensão independente: troca as cores da interface do Hefesto e o lado dos botões de fechar, maximizar e minimizar. Não roda programa nenhum e não lê nada da sua casa.
 
 ## O que ela faz
 
@@ -16,6 +16,22 @@ As cores dos plásticos dos controles não mudam: a luz do controle é a mesma e
 A logo também fica a de sempre: o tema põe atrás dela o disco escuro, com um aro claro, e o fundo em volta da janela fica claro também.
 
 O tema troca na hora: a chave da aba Experimental liga ou desliga, e a janela aberta repinta sem fechar, com a barra de cima e as listas do sistema no claro.
+
+## Os botões da janela (1.1.0)
+
+O Hefesto põe os botões de fechar, maximizar e minimizar do lado que o sistema usa (no COSMIC, à direita). Esta
+extensão os leva para a **esquerda**, na ordem fechar, maximizar, minimizar. Cor e lado são duas opções separadas,
+no botão de configurações da extensão, e as duas vêm ligadas:
+
+| opção | liga | desliga |
+| --- | --- | --- |
+| Cores claras | o fundo claro | volta ao escuro |
+| Botões à esquerda | os botões vão para a esquerda | voltam ao lado do sistema |
+
+Dá para ter só o lado (cores desligadas) ou só a cor (botões desligados). Desligar a extensão inteira devolve as
+duas coisas. Tudo vale na hora, com a janela aberta. O lado vai no bloco `tema` do manifesto
+(`"botoes": "esquerda"`), e cada escolha liga a sua opção por `cor_pela_opcao` e `botoes_pela_opcao`: o Hefesto
+recusa um lado que não seja `esquerda` ou `direita` e um vínculo com opção que não existe ou não é do tipo `ligado`.
 
 ## Instalar
 

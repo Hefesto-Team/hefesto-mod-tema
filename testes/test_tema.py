@@ -64,6 +64,19 @@ def test_o_rotulo_de_campo_segue_o_verde() -> None:
     assert TOKENS["--rot-campo"] == TOKENS["--green"]
 
 
+def test_o_lado_dos_botoes_e_as_duas_opcoes_vem_ligados() -> None:
+    """Cor e lado se escolhem separados: cada um tem a sua chave, ligada de fábrica."""
+    bloco = MANIFESTO["tema"]
+    assert bloco["botoes"] == "esquerda"
+    opcoes = {o["id"]: o for o in MANIFESTO["opcoes"]}
+    assert bloco["cor_pela_opcao"] in opcoes
+    assert bloco["botoes_pela_opcao"] in opcoes
+    assert bloco["cor_pela_opcao"] != bloco["botoes_pela_opcao"]
+    for opcao in opcoes.values():
+        assert opcao["tipo"] == "ligado"
+        assert opcao["padrao"] is True
+
+
 def test_a_regua_do_hefesto_aceita_a_folha() -> None:
     tema = pytest.importorskip("hefesto_dualsense4unix.mods.tema")
     aceito = tema.validar(FOLHA)
@@ -81,3 +94,11 @@ def test_o_fundo_em_volta_da_janela_fica_um_tom_abaixo_do_fundo() -> None:
     assert TOKENS["--fundo-da-pagina"] == "#dde1ea"
     assert _luminancia(TOKENS["--fundo-da-pagina"]) < _luminancia(TOKENS["--app-bg"])
     assert _contraste(TOKENS["--fg"], TOKENS["--fundo-da-pagina"]) >= 4.5
+
+
+def test_o_manifesto_passa_pela_regua_do_hefesto() -> None:
+    """Com o Hefesto 2.x importável, o manifesto inteiro (lado, opções e vínculos) é aceito."""
+    manifesto = pytest.importorskip("hefesto_dualsense4unix.mods.manifesto")
+    aceito = manifesto.Manifesto.model_validate(MANIFESTO)
+    assert aceito.tema["botoes"] == "esquerda"
+    assert {o.id for o in aceito.opcoes} == {"cores_claras", "botoes_a_esquerda"}

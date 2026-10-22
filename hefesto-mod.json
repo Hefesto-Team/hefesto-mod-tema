@@ -1,12 +1,21 @@
 {
   "id": "tema-claro",
   "nome": "Tema claro",
-  "versao": "1.0.0",
+  "versao": "1.1.0",
   "api": ">=2,<3",
   "licenca": "MIT",
-  "descricao": "A interface do Hefesto em fundo claro, com os textos e os destaques escuros que passam na régua de contraste.",
-  "aviso": "Extensão independente: troca só as cores da interface do Hefesto. Não roda programa nenhum e não lê nada da sua casa.",
+  "descricao": "A interface do Hefesto em fundo claro, com os textos e os destaques escuros que passam na régua de contraste, e os botões da janela à esquerda.",
+  "aviso": "Extensão independente: troca as cores da interface do Hefesto e o lado dos botões de fechar, maximizar e minimizar. Não roda programa nenhum e não lê nada da sua casa.",
   "tipos": ["tema"],
   "permissoes": ["tema"],
-  "tema": {"arquivo": "tema.css"}
+  "tema": {
+    "arquivo": "tema.css",
+    "botoes": "esquerda",
+    "cor_pela_opcao": "cores_claras",
+    "botoes_pela_opcao": "botoes_a_esquerda"
+  },
+  "opcoes": [
+    {"id": "cores_claras", "rotulo": "Cores claras", "tipo": "ligado", "padrao": true},
+    {"id": "botoes_a_esquerda", "rotulo": "Botões à esquerda", "tipo": "ligado", "padrao": true}
+  ]
 }
