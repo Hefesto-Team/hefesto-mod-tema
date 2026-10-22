@@ -17,6 +17,6 @@
   "opcoes": [
     {"id": "cores_claras", "rotulo": "Cores claras", "tipo": "ligado", "padrao": true},
     {"id": "botoes_a_esquerda", "rotulo": "Botões à esquerda", "tipo": "ligado", "padrao": true},
-    {"id": "meu_css", "rotulo": "Usar o meu CSS", "tipo": "css", "padrao": false, "grupo": "Avançado"}
+    {"id": "meu_css", "rotulo": "Usar o meu CSS", "tipo": "css", "padrao": false}
   ]
 }
