@@ -72,9 +72,19 @@ def test_o_lado_dos_botoes_e_as_duas_opcoes_vem_ligados() -> None:
     assert bloco["cor_pela_opcao"] in opcoes
     assert bloco["botoes_pela_opcao"] in opcoes
     assert bloco["cor_pela_opcao"] != bloco["botoes_pela_opcao"]
-    for opcao in opcoes.values():
-        assert opcao["tipo"] == "ligado"
-        assert opcao["padrao"] is True
+    for opcao_id in (bloco["cor_pela_opcao"], bloco["botoes_pela_opcao"]):
+        assert opcoes[opcao_id]["tipo"] == "ligado"
+        assert opcoes[opcao_id]["padrao"] is True
+
+
+def test_o_css_de_quem_usa_e_uma_opcao_so_e_vem_desligada() -> None:
+    """O ``meu.css`` é a escolha de quem usa: uma opção do tipo ``css``, desligada de fábrica."""
+    do_css = [o for o in MANIFESTO["opcoes"] if o["tipo"] == "css"]
+    assert [o["id"] for o in do_css] == ["meu_css"]
+    assert do_css[0]["padrao"] is False
+    bloco = MANIFESTO["tema"]
+    assert "meu_css" not in (bloco["cor_pela_opcao"], bloco["botoes_pela_opcao"])
+    assert not (RAIZ / "meu.css").exists(), "o CSS de quem usa mora nos dados, não na extensão"
 
 
 def test_a_regua_do_hefesto_aceita_a_folha() -> None:
@@ -101,4 +111,5 @@ def test_o_manifesto_passa_pela_regua_do_hefesto() -> None:
     manifesto = pytest.importorskip("hefesto_dualsense4unix.mods.manifesto")
     aceito = manifesto.Manifesto.model_validate(MANIFESTO)
     assert aceito.tema["botoes"] == "esquerda"
-    assert {o.id for o in aceito.opcoes} == {"cores_claras", "botoes_a_esquerda"}
+    assert {o.id for o in aceito.opcoes} == {"cores_claras", "botoes_a_esquerda", "meu_css"}
+    assert aceito.opcao_do_css is not None and aceito.opcao_do_css.id == "meu_css"

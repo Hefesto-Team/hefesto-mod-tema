@@ -1,7 +1,7 @@
 {
   "id": "tema-claro",
   "nome": "Tema claro",
-  "versao": "1.1.0",
+  "versao": "1.2.0",
   "api": ">=2,<3",
   "licenca": "MIT",
   "descricao": "A interface do Hefesto em fundo claro, com os textos e os destaques escuros que passam na régua de contraste, e os botões da janela à esquerda.",
@@ -16,6 +16,7 @@
   },
   "opcoes": [
     {"id": "cores_claras", "rotulo": "Cores claras", "tipo": "ligado", "padrao": true},
-    {"id": "botoes_a_esquerda", "rotulo": "Botões à esquerda", "tipo": "ligado", "padrao": true}
+    {"id": "botoes_a_esquerda", "rotulo": "Botões à esquerda", "tipo": "ligado", "padrao": true},
+    {"id": "meu_css", "rotulo": "Usar o meu CSS", "tipo": "css", "padrao": false, "grupo": "Avançado"}
   ]
 }
