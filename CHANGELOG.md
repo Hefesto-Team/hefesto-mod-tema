@@ -2,7 +2,7 @@
 
 ## 1.2.0 (22/10/2026)
 
-- Nova opção «Usar o meu CSS» (desligada de fábrica), no grupo «Avançado», e o botão «Editar o meu CSS» ao lado dela: o `meu.css` é uma folha SUA, livre (cor e layout), que o Hefesto põe por cima do tema e aplica ao salvar, sem reabrir a janela. Fica em `~/.local/share/hefesto-dualsense4unix/mods/tema-claro/meu.css`, nasce com um exemplo comentado e sobrevive às atualizações da extensão.
+- Nova opção «Usar o meu CSS» (desligada de fábrica), no grupo «Avançado», e o botão «Editar o meu CSS» ao lado dela: o `meu.css` é uma folha SUA, livre (cor e layout), que o Hefesto põe por cima do tema e aplica ao salvar, sem reabrir a janela. Fica em `~/.local/state/hefesto-dualsense4unix/mods/tema-claro/meu.css`, nasce com um exemplo comentado e sobrevive às atualizações da extensão.
 - Não vale `url()`, `@import`, funções de imagem, `expression()`, barra invertida nem «<»; passando de 16 KB, ou errando uma chave, o arquivo inteiro fica sem valer e a janela da extensão diz a linha.
 - Pede o Hefesto que conhece a opção do tipo `css` (a mesma API 2): um Hefesto anterior recusa o manifesto, então quem não atualizou o Hefesto fica na 1.1.0.
 

@@ -38,7 +38,7 @@ recusa um lado que não seja `esquerda` ou `direita` e um vínculo com opção q
 A folha do tema só troca cores, e passa pela régua de contraste. Para mexer no resto (bordas, tamanhos, espaços),
 a opção **Usar o meu CSS**, desligada de fábrica, liga uma folha SUA por cima do tema. No botão de configurações da
 extensão, **Editar o meu CSS** cria o arquivo `meu.css` com um exemplo comentado (na pasta de dados da extensão,
-`~/.local/share/hefesto-dualsense4unix/mods/tema-claro/`) e o abre no seu editor. Salvou, a janela aberta repinta
+`~/.local/state/hefesto-dualsense4unix/mods/tema-claro/`) e o abre no seu editor. Salvou, a janela aberta repinta
 na hora. O arquivo é seu: a atualização da extensão não o toca.
 
 Vale cor e layout. Não vale `url()`, `@import`, funções de imagem, `expression()`, barra invertida nem «<», e o
