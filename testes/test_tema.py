@@ -1,4 +1,5 @@
-"""A folha do tema claro, medida pela mesma conta da régua do Hefesto (``mods/tema.py``)."""
+"""O Gerenciador de Tema: o manifesto e a folha do Claro, medida pela mesma conta da régua do
+Hefesto (``mods/tema.py``)."""
 from __future__ import annotations
 
 import json
@@ -9,7 +10,8 @@ import pytest
 
 RAIZ = Path(__file__).resolve().parents[1]
 MANIFESTO = json.loads((RAIZ / "hefesto-mod.json").read_text(encoding="utf-8"))
-FOLHA = (RAIZ / MANIFESTO["tema"]["arquivo"]).read_text(encoding="utf-8")
+FOLHA = (RAIZ / MANIFESTO["tema"]["folhas_por_escolha"]["Claro"]).read_text(encoding="utf-8")
+OPCOES = {o["id"]: o for o in MANIFESTO["opcoes"]}
 
 TEXTOS = ("--fg", "--texto-suave", "--texto-mudo", "--comment", "--rot-campo")
 FUNDOS = ("--app-bg", "--panel", "--elevated")
@@ -64,17 +66,43 @@ def test_o_rotulo_de_campo_segue_o_verde() -> None:
     assert TOKENS["--rot-campo"] == TOKENS["--green"]
 
 
-def test_o_lado_dos_botoes_e_as_duas_opcoes_vem_ligados() -> None:
-    """Cor e lado se escolhem separados: cada um tem a sua chave, ligada de fábrica."""
+def test_o_escuro_e_o_padrao_e_o_claro_esta_a_um_clique() -> None:
     bloco = MANIFESTO["tema"]
-    assert bloco["botoes"] == "esquerda"
-    opcoes = {o["id"]: o for o in MANIFESTO["opcoes"]}
-    assert bloco["cor_pela_opcao"] in opcoes
-    assert bloco["botoes_pela_opcao"] in opcoes
-    assert bloco["cor_pela_opcao"] != bloco["botoes_pela_opcao"]
-    for opcao_id in (bloco["cor_pela_opcao"], bloco["botoes_pela_opcao"]):
-        assert opcoes[opcao_id]["tipo"] == "ligado"
-        assert opcoes[opcao_id]["padrao"] is True
+    tema = OPCOES[bloco["cor_pela_opcao"]]
+    assert tema["tipo"] == "escolha" and tema["padrao"] == "Escuro"
+    assert tema["escolhas"] == ["Escuro", "Claro", "Importado"]
+    assert set(bloco["folhas_por_escolha"]) == {"Claro"}, "o Escuro é o da casa, sem folha"
+    assert bloco["importados_por_escolha"] == {"Importado": "tema_importado"}
+
+
+def test_os_botoes_ficam_do_lado_do_sistema_de_fabrica() -> None:
+    bloco = MANIFESTO["tema"]
+    botoes = OPCOES[bloco["botoes_pela_opcao"]]
+    assert botoes["padrao"] == "Do sistema" and "Do sistema" not in bloco["lados_por_escolha"]
+    assert bloco["lados_por_escolha"] == {"Esquerda": "esquerda", "Direita": "direita"}
+
+
+def test_o_que_quem_usa_traz_entra_por_importar() -> None:
+    bloco = MANIFESTO["tema"]
+    assert OPCOES["tema_importado"]["formato"] == "tema"
+    assert OPCOES[bloco["logo_pela_opcao"]]["formato"] == "logo"
+    assert OPCOES[bloco["destaque_pela_opcao"]]["tipo"] == "cor"
+    assert OPCOES[bloco["destaque_ligado_pela_opcao"]]["padrao"] is False
+
+
+def test_a_troca_traz_as_escolhas_da_tema_claro() -> None:
+    assert MANIFESTO["substitui"] == ["tema-claro"]
+    assert OPCOES["tema"]["herda"] == {"cores_claras": {"true": "Claro", "false": "Escuro"}}
+    assert OPCOES["botoes"]["herda"] == {"botoes_a_esquerda": {"true": "Esquerda"}}
+    assert "meu_css" in OPCOES, "o meu.css passa pelo id igual"
+
+
+def test_a_tela_tem_rotulo_curto_com_maiuscula_e_dica() -> None:
+    grupos = {o["grupo"] for o in MANIFESTO["opcoes"]}
+    for o in MANIFESTO["opcoes"]:
+        assert o["rotulo"][0].isupper() and len(o["rotulo"]) <= 12, o["id"]
+        chave_da_aba = o["tipo"] == "ligado" and o["rotulo"] in grupos
+        assert chave_da_aba or o.get("dica"), f"{o['id']} sem dica"
 
 
 def test_o_css_de_quem_usa_e_uma_opcao_so_e_vem_desligada() -> None:
@@ -82,8 +110,7 @@ def test_o_css_de_quem_usa_e_uma_opcao_so_e_vem_desligada() -> None:
     do_css = [o for o in MANIFESTO["opcoes"] if o["tipo"] == "css"]
     assert [o["id"] for o in do_css] == ["meu_css"]
     assert do_css[0]["padrao"] is False
-    bloco = MANIFESTO["tema"]
-    assert "meu_css" not in (bloco["cor_pela_opcao"], bloco["botoes_pela_opcao"])
+    assert "meu_css" not in MANIFESTO["tema"].values()
     assert not (RAIZ / "meu.css").exists(), "o CSS de quem usa mora nos dados, não na extensão"
 
 
@@ -107,9 +134,9 @@ def test_o_fundo_em_volta_da_janela_fica_um_tom_abaixo_do_fundo() -> None:
 
 
 def test_o_manifesto_passa_pela_regua_do_hefesto() -> None:
-    """Com o Hefesto 2.x importável, o manifesto inteiro (lado, opções e vínculos) é aceito."""
+    """Com o Hefesto importável, o manifesto inteiro (escolhas, importados e vínculos) é aceito."""
     manifesto = pytest.importorskip("hefesto_dualsense4unix.mods.manifesto")
-    aceito = manifesto.Manifesto.model_validate(MANIFESTO)
-    assert aceito.tema["botoes"] == "esquerda"
-    assert {o.id for o in aceito.opcoes} == {"cores_claras", "botoes_a_esquerda", "meu_css"}
+    aceito = manifesto.ler_manifesto(RAIZ)
+    assert aceito.id == "gerenciador-de-tema" and aceito.nome == "Gerenciador de Tema"
+    assert [o.id for o in aceito.opcoes] == list(OPCOES)
     assert aceito.opcao_do_css is not None and aceito.opcao_do_css.id == "meu_css"

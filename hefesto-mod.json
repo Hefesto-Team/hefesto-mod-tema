@@ -1,22 +1,118 @@
 {
-  "id": "tema-claro",
-  "nome": "Tema claro",
-  "versao": "1.2.0",
+  "id": "gerenciador-de-tema",
+  "nome": "Gerenciador de Tema",
+  "versao": "2.0.0",
   "api": ">=2,<3",
   "licenca": "MIT",
-  "descricao": "A interface do Hefesto em fundo claro, com os textos e os destaques escuros que passam na régua de contraste, e os botões da janela à esquerda.",
-  "aviso": "Extensão independente: troca as cores da interface do Hefesto e o lado dos botões de fechar, maximizar e minimizar. Não roda programa nenhum e não lê nada da sua casa.",
-  "tipos": ["tema"],
-  "permissoes": ["tema"],
+  "descricao": "O tema da interface do Hefesto: Escuro ou Claro, um tema seu, a cor de destaque, o lado dos botões da janela, a sua logo e o seu CSS.",
+  "substitui": [
+    "tema-claro"
+  ],
+  "tipos": [
+    "tema"
+  ],
+  "permissoes": [
+    "tema"
+  ],
   "tema": {
-    "arquivo": "tema.css",
-    "botoes": "esquerda",
-    "cor_pela_opcao": "cores_claras",
-    "botoes_pela_opcao": "botoes_a_esquerda"
+    "cor_pela_opcao": "tema",
+    "folhas_por_escolha": {
+      "Claro": "tema.css"
+    },
+    "importados_por_escolha": {
+      "Importado": "tema_importado"
+    },
+    "destaque_pela_opcao": "cor_de_destaque",
+    "destaque_ligado_pela_opcao": "destaque",
+    "botoes_pela_opcao": "botoes",
+    "lados_por_escolha": {
+      "Esquerda": "esquerda",
+      "Direita": "direita"
+    },
+    "logo_pela_opcao": "logo"
   },
   "opcoes": [
-    {"id": "cores_claras", "rotulo": "Cores claras", "tipo": "ligado", "padrao": true},
-    {"id": "botoes_a_esquerda", "rotulo": "Botões à esquerda", "tipo": "ligado", "padrao": true},
-    {"id": "meu_css", "rotulo": "Usar o meu CSS", "tipo": "css", "padrao": false}
+    {
+      "id": "tema",
+      "rotulo": "Tema",
+      "tipo": "escolha",
+      "escolhas": [
+        "Escuro",
+        "Claro",
+        "Importado"
+      ],
+      "padrao": "Escuro",
+      "grupo": "Cores",
+      "dica": "Importado usa o tema que você trouxe",
+      "herda": {
+        "cores_claras": {
+          "true": "Claro",
+          "false": "Escuro"
+        }
+      }
+    },
+    {
+      "id": "tema_importado",
+      "rotulo": "Arquivo",
+      "tipo": "importar",
+      "formato": "tema",
+      "grupo": "Cores",
+      "aparece_com": {
+        "tema": "Importado"
+      },
+      "dica": "Um .css só com as cores do :root, conferidas pela régua de contraste"
+    },
+    {
+      "id": "destaque",
+      "rotulo": "Destaque",
+      "tipo": "ligado",
+      "padrao": false,
+      "grupo": "Destaque"
+    },
+    {
+      "id": "cor_de_destaque",
+      "rotulo": "Cor",
+      "tipo": "cor",
+      "padrao": "#50fa7b",
+      "grupo": "Destaque",
+      "dica": "A cor das chaves ligadas e dos realces; a ilegível não liga",
+      "aparece_com": {
+        "destaque": true
+      }
+    },
+    {
+      "id": "botoes",
+      "rotulo": "Botões",
+      "tipo": "escolha",
+      "escolhas": [
+        "Do sistema",
+        "Esquerda",
+        "Direita"
+      ],
+      "padrao": "Do sistema",
+      "grupo": "Janela",
+      "dica": "O lado de fechar, maximizar e minimizar",
+      "herda": {
+        "botoes_a_esquerda": {
+          "true": "Esquerda"
+        }
+      }
+    },
+    {
+      "id": "logo",
+      "rotulo": "Logo",
+      "tipo": "importar",
+      "formato": "logo",
+      "grupo": "Janela",
+      "dica": "PNG, JPEG ou WebP, até 256 KB e 1024 px"
+    },
+    {
+      "id": "meu_css",
+      "rotulo": "Meu CSS",
+      "tipo": "css",
+      "padrao": false,
+      "grupo": "CSS",
+      "dica": "As suas regras por cima da interface, sem url() nem @import"
+    }
   ]
 }
