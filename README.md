@@ -8,13 +8,13 @@ a sua logo e o seu CSS. O Hefesto o traz de fábrica, ligado no Escuro.
 ## O que ele faz
 
 O [Hefesto](https://github.com/Hefesto-Team/hefesto-dualsense4unix) nasce escuro. Na janela da extensão, aba
-Experimental, as opções se arrumam em quatro cartões:
+Experimental, as opções se arrumam em quatro abas:
 
-| cartão | opção | o que faz |
+| aba | opção | o que faz |
 | --- | --- | --- |
 | Cores | Tema | Escuro (o da casa), Claro (`tema.css`) ou Importado |
 | Cores | Arquivo | aparece com Importado: um `.css` só com o bloco `:root{…}` |
-| Destaque | Cor | com a chave do cartão ligada, a cor das chaves e dos realces |
+| Destaque | Cor | com a bolinha da aba acesa, a cor das chaves e dos realces |
 | Janela | Botões | Do sistema, Esquerda ou Direita: o lado de fechar, maximizar e minimizar |
 | Janela | Logo | uma imagem sua no lugar da logo |
 | CSS | Meu CSS | uma folha sua por cima da interface |

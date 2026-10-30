@@ -75,10 +75,7 @@
       "tipo": "cor",
       "padrao": "#50fa7b",
       "grupo": "Destaque",
-      "dica": "A cor das chaves ligadas e dos realces; a ilegível não liga",
-      "aparece_com": {
-        "destaque": true
-      }
+      "dica": "A cor das chaves ligadas e dos realces; a ilegível não liga"
     },
     {
       "id": "botoes",
