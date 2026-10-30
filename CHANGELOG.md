@@ -7,6 +7,7 @@
 - A cor de destaque se escolhe; a que fica ilegível sobre os fundos não liga, e a janela diz por quê.
 - Os botões da janela vão para o lado do sistema, para a esquerda ou para a direita.
 - A logo se importa: PNG, JPEG ou WebP, até 256 KB e 1024 px de lado.
+- O seu CSS alcança a barra da janela: a regra que começa por `headerbar` pinta a barra, o título e os botões (`button.fechar`, `button.minimizar`, `button.maximizar`). O README traz os seletores e um exemplo pronto.
 - Sem aviso ao ligar: o install do Hefesto a traz ligada no Escuro, sem mudar nada na tela.
 - Pede o Hefesto que conhece as opções `importar` e `cor` e o bloco `tema` por escolha (a mesma API 2): um Hefesto anterior recusa o manifesto e fica com a 1.2.0.
 

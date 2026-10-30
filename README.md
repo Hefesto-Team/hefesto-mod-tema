@@ -30,10 +30,40 @@ O que você importa é dado, nunca código, e passa pela régua antes de valer:
 - **Cor de destaque:** a que não passa de 3:1 sobre os fundos do tema não liga, e a janela diz por quê na linha.
 - **Logo:** PNG, JPEG ou WebP, conferida pelos bytes, até 256 KB e de 16 a 1024 px de lado. SVG nunca.
 - **Meu CSS:** cor e layout; não vale `url()`, `@import`, funções de imagem, `expression()`, barra invertida nem
-  «<», e o teto é 16 KB. Ele vale dentro da interface: os botões da janela moram na barra de cima, fora do
-  alcance dele, e nenhum tema os esconde.
+  «<», e o teto é 16 KB. Na barra da janela, só cor, fundo, borda, cantos, sombra, espaço e letra, até 48px (3em),
+  sem medida negativa e sem letra transparente: nenhum CSS esconde os botões. A linha que o GTK não entende fica
+  de fora sozinha, e a janela abre igual.
 
 A cópia do que você importa mora na pasta de dados da extensão, e a atualização não a toca.
+
+## Os botões da janela pelo seu CSS
+
+O seu CSS vale na página e na barra de cima. Toda regra que começa por `headerbar` vai para a barra; o resto, para a
+página. `var(--token)` vira a cor do tema em uso.
+
+| o que | seletor |
+| --- | --- |
+| a barra | `headerbar` |
+| fechar | `headerbar button.fechar` |
+| minimizar | `headerbar button.minimizar` |
+| maximizar | `headerbar button.maximizar` |
+| o título | `headerbar .title` |
+| o subtítulo | `headerbar .subtitle` |
+| a logo (na página) | `.logo` |
+
+Botões redondos nas cores do tema, pronto para colar no Meu CSS:
+
+```css
+headerbar { background: #1e1f29; border-bottom: 2px solid var(--purple); }
+headerbar .title { color: #f1fa8c; font-weight: bold; }
+headerbar .subtitle { color: #8be9fd; }
+headerbar button.fechar { background: #ff5555; color: #1e1f29; border-radius: 50%; }
+headerbar button.minimizar { background: var(--purple); color: #1e1f29; border-radius: 50%; }
+headerbar button.maximizar { background: var(--green); color: #1e1f29; border-radius: 50%; }
+.logo { border-radius: 50%; }
+```
+
+Desligar o Meu CSS devolve a barra do sistema na hora.
 
 ## Instalar
 
