@@ -74,8 +74,8 @@ hefesto-dualsense4unix mod instalar https://github.com/Hefesto-Team/hefesto-mod-
 hefesto-dualsense4unix mod ligar gerenciador-de-tema
 ```
 
-A extensão instalada pelo git se atualiza sozinha. Ela substitui a antiga `tema-claro`: instalar a nova tira a
-antiga e traz as escolhas dela (Claro e botões à esquerda) e o `meu.css`.
+A extensão instalada pelo git se atualiza sozinha. Substitui a antiga `tema-claro`: instalar a nova tira a
+antiga e mantém as escolhas já feitas (Claro e botões à esquerda) e o `meu.css`.
 
 ## Testes
 

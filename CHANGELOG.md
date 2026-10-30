@@ -2,7 +2,7 @@
 
 ## 2.0.0 (30/10/2026)
 
-- A extensão vira o **Gerenciador de Tema** (`gerenciador-de-tema`) e mora em https://github.com/Hefesto-Team/hefesto-mod-tema. Ela substitui a `tema-claro`: instalar a nova tira a antiga e traz as escolhas dela e o `meu.css`.
+- A extensão vira o **Gerenciador de Tema** (`gerenciador-de-tema`) e mora em https://github.com/Hefesto-Team/hefesto-mod-tema. Substitui a `tema-claro`: instalar a nova tira a antiga e mantém as escolhas já feitas e o `meu.css`.
 - O tema se escolhe: Escuro (de fábrica), Claro ou Importado, um `.css` seu conferido pela régua de contraste.
 - A cor de destaque se escolhe; a que fica ilegível sobre os fundos não liga, e a janela diz por quê.
 - Os botões da janela vão para o lado do sistema, para a esquerda ou para a direita.
@@ -13,7 +13,7 @@
 
 ## 1.2.0 (22/10/2026)
 
-- Nova opção «Usar o meu CSS» (desligada de fábrica), e o botão «Editar o meu CSS» ao lado dela: o `meu.css` é uma folha SUA, livre (cor e layout), que o Hefesto põe por cima do tema e aplica ao salvar, sem reabrir a janela. Fica na pasta de dados da extensão, nasce com um exemplo comentado e sobrevive às atualizações da extensão.
+- Nova opção «Usar o meu CSS» (desligada de fábrica), e o botão «Editar o meu CSS» ao lado: o `meu.css` é uma folha SUA, livre (cor e layout), que o Hefesto põe por cima do tema e aplica ao salvar, sem reabrir a janela. Fica na pasta de dados da extensão, nasce com um exemplo comentado e sobrevive às atualizações da extensão.
 - Não vale `url()`, `@import`, funções de imagem, `expression()`, barra invertida nem «<»; passando de 16 KB, ou errando uma chave, o arquivo inteiro fica sem valer e a janela da extensão diz a linha.
 - Pede o Hefesto que conhece a opção do tipo `css` (a mesma API 2): um Hefesto anterior recusa o manifesto, então quem não atualizou o Hefesto fica na 1.1.0.
 
@@ -26,6 +26,6 @@
 ## 1.0.0 (20/10/2026)
 
 - A extensão nasce: o fundo claro, os textos escuros, os sete destaques e as cores das categorias da aba Conexões, medidos pela régua de contraste do Hefesto.
-- A logo ganha o disco escuro de sempre (`--logo-fundo`) e o aro claro (`--logo-aro`): as cores dela não mudam.
+- A logo ganha o disco escuro de sempre (`--logo-fundo`) e o aro claro (`--logo-aro`): as cores da logo não mudam.
 - O fundo em volta da janela fica claro (`--fundo-da-pagina`), um tom abaixo do fundo da interface.
 - Ligar e desligar valem na hora, com a janela aberta (Hefesto com o tema ao vivo).
