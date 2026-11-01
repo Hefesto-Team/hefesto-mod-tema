@@ -60,10 +60,13 @@ headerbar .subtitle { color: #8be9fd; }
 headerbar button.fechar { background: #ff5555; color: #1e1f29; border-radius: 50%; }
 headerbar button.minimizar { background: var(--purple); color: #1e1f29; border-radius: 50%; }
 headerbar button.maximizar { background: var(--green); color: #1e1f29; border-radius: 50%; }
+headerbar button.fechar:hover { background: #ff8a8a; }
+headerbar button.minimizar:hover { background: #cfb3ff; }
+headerbar button.maximizar:hover { background: #a6ffbd; }
 .logo { border-radius: 50%; }
 ```
 
-Desligar o Meu CSS devolve a barra do sistema na hora.
+Desligar o Meu CSS devolve a barra da interface na hora.
 
 ## Instalar
 

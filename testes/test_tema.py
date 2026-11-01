@@ -140,3 +140,32 @@ def test_o_manifesto_passa_pela_regua_do_hefesto() -> None:
     assert aceito.id == "gerenciador-de-tema" and aceito.nome == "Gerenciador de Tema"
     assert [o.id for o in aceito.opcoes] == list(OPCOES)
     assert aceito.opcao_do_css is not None and aceito.opcao_do_css.id == "meu_css"
+
+
+def _exemplo_do_meu_css() -> dict[str, str]:
+    texto = (RAIZ / "README.md").read_text(encoding="utf-8")
+    bloco = re.search(r"pronto para colar no Meu CSS:\n\n```css\n(.*?)```", texto, re.S)
+    assert bloco, "o exemplo do Meu CSS saiu do README"
+    regras = re.findall(r"^(headerbar button\.\w+(?::hover)?) \{([^}]*)\}", bloco.group(1), re.M)
+    fundos = {}
+    for seletor, corpo in regras:
+        achado = re.search(r"background:\s*([^;]+);", corpo)
+        if achado:
+            fundos[seletor] = achado.group(1).strip()
+    return {"texto": bloco.group(1), **fundos}
+
+
+def test_o_exemplo_do_readme_guarda_o_hover_de_cada_botao() -> None:
+    """O fundo do Meu CSS vence o ``:hover`` do Hefesto: o exemplo traz o próprio, de outra cor."""
+    exemplo = _exemplo_do_meu_css()
+    for botao in ("fechar", "minimizar", "maximizar"):
+        repouso = exemplo.get(f"headerbar button.{botao}")
+        sobre = exemplo.get(f"headerbar button.{botao}:hover")
+        assert repouso and sobre and sobre != repouso, (botao, repouso, sobre)
+
+
+def test_o_exemplo_do_readme_passa_pela_regua_do_meu_css() -> None:
+    meu_css = pytest.importorskip("hefesto_dualsense4unix.mods.meu_css")
+    aplicada = meu_css.aplicar(_exemplo_do_meu_css()["texto"])
+    seletores = {s for s, _ in meu_css.regras_da_janela(aplicada)}
+    assert {f"headerbar button.{b}:hover" for b in ("fechar", "minimizar", "maximizar")} <= seletores
